@@ -1,0 +1,17 @@
+export const queryKeys = {
+  auth: ["auth"] as const,
+  me: () => [...queryKeys.auth, "me"] as const,
+  users: (params?: object) => ["users", params] as const,
+  companies: (params?: object) => ["companies", params] as const,
+  problems: (params?: object) => ["problems", params] as const,
+  assessments: (params?: object) => ["assessments", params] as const,
+  assessment: (id: string) => ["assessment", id] as const,
+  invitations: () => ["invitations"] as const,
+  invitation: (token: string) => ["invitation", token] as const,
+  attempts: () => ["attempts"] as const,
+  attempt: (id: string) => ["attempt", id] as const,
+  submissions: (params?: object) => ["submissions", params] as const,
+  payments: (params?: object) => ["payments", params] as const,
+  payment: (id: string) => ["payment", id] as const,
+  auditLogs: (params?: object) => ["audit-logs", params] as const,
+};
