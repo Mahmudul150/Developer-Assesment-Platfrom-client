@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { applyCompany } from "@/api/company.api";
 import { fieldError } from "@/components/shared/form-error";
@@ -11,6 +12,7 @@ import { companyApplySchema } from "@/schemas/company.schema";
 import { ApiError } from "@/types/api";
 
 export function CompanyApplyForm() {
+  const router = useRouter();
   const form = useForm({
     defaultValues: {
       name: "",
@@ -35,7 +37,9 @@ export function CompanyApplyForm() {
           },
         });
         toast.success(response.message || "Application submitted");
-        form.reset();
+        router.push(
+          `/verify-email?email=${encodeURIComponent(value.email)}&type=company`,
+        );
       } catch (error) {
         toast.error(
           error instanceof ApiError ? error.message : "Application failed",
