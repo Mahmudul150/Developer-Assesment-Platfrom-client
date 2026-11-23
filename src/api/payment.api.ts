@@ -17,7 +17,9 @@ export function initiatePayment(assessmentId: string) {
   return apiClient<ApiResponse<InitiatePaymentResponse>>("/payments/initiate", {
     method: "POST",
     body: payload,
+    
   });
+ 
 }
 
 export function getPaymentById(id: string) {

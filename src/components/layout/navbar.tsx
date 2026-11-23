@@ -4,7 +4,9 @@ import { ROLE_HOME } from "@/lib/auth";
 import { APP_NAME } from "@/lib/constants";
 import { getSessionFromCookies } from "@/lib/session";
 import { cn } from "@/lib/utils";
+import { Role } from "@/types/enums";
 import { MobileNav } from "./mobile-nav";
+import { UserMenu } from "./user-menu";
 
 const publicLinks = [
   { href: "/about", label: "About" },
@@ -42,13 +44,20 @@ export async function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          {home ? (
-            <Link
-              href={home}
-              className={cn(buttonVariants(), "hidden sm:inline-flex")}
-            >
-              Dashboard
-            </Link>
+          {session.isLoggedIn ? (
+            <>
+              <Link
+                href={home ?? "/"}
+                className={cn(buttonVariants(), "hidden sm:inline-flex")}
+              >
+                Dashboard
+              </Link>
+              <UserMenu
+                name={session.payload?.name ?? "User"}
+                email={session.payload?.email ?? ""}
+                role={session.role ?? Role.CANDIDATE}
+              />
+            </>
           ) : (
             <>
               <Link

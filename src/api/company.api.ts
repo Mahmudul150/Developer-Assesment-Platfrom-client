@@ -2,6 +2,7 @@ import apiClient from "@/lib/apiClient";
 import type {
   ApiResponse,
   ApplyCompanyPayload,
+  CompanyDashboardStats,
   CompanyListParams,
   PaginatedResponse,
   UpdateCompanyProfilePayload,
@@ -50,6 +51,12 @@ export function getCompanies(params?: CompanyListParams) {
 
 export function getMyCompany() {
   return apiClient<ApiResponse<CompanyProfile>>("/company/me");
+}
+
+export function getCompanyDashboardStats() {
+  return apiClient<ApiResponse<CompanyDashboardStats>>(
+    "/company/dashboard-stats",
+  );
 }
 
 export function updateCompanyProfile(payload: UpdateCompanyProfilePayload) {
