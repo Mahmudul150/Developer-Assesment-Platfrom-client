@@ -44,7 +44,7 @@ export function AssessmentDetailActions({
         return;
       }
       toast.error(
-        error instanceof ApiError ? error.message : "Could not publish",
+        error instanceof ApiError ? error.message : "Could not publishs",
       );
     },
   });
