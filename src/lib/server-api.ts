@@ -41,7 +41,13 @@ export async function serverApi<T>(
     redirect(`/api/session/refresh?next=${encodeURIComponent(nextPath)}`);
   }
 
-  const payload = (await res.json()) as ApiResponse<T>;
+  let payload: ApiResponse<T>;
+  try {
+    payload = (await res.json()) as ApiResponse<T>;
+  } catch {
+    throw new ApiError(`Unexpected response (${res.status})`, res.status, []);
+  }
+
   if (!res.ok || !payload.success) {
     throw new ApiError(
       payload.message ?? "Request failed",

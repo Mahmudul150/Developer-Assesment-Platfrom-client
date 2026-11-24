@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import { AssessmentDetailActions } from "@/components/company/assessment-detail-actions";
 import { AssessmentProblemsPanel } from "@/components/company/assessment-problems-panel";
 import { PaymentPanel } from "@/components/company/payment-panel";
@@ -23,14 +22,8 @@ export default async function AssessmentDetailPage({
   const { id } = await params;
   const { warning } = await searchParams;
 
-  let assessment: AssessmentDetail | null = null;
-  try {
-    assessment = await serverApi<AssessmentDetail>(`/api/v1/assesment/${id}`);
-  } catch {
-    redirect("/company/assessments");
-  }
+  const assessment = await serverApi<AssessmentDetail>(`/api/v1/assesment/${id}`);
 
-  if (!assessment) redirect("/company/assessments");
   const editable = assessment.status === "DRAFT";
 
   return (
