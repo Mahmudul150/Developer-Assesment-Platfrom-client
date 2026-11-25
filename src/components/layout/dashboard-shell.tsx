@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet } from "@/components/ui/sheet";
 import { APP_NAME, type NavItem } from "@/lib/constants";
@@ -24,7 +24,17 @@ export function DashboardShell({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const sidebar = <SidebarNav items={items} />;
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -38,7 +48,7 @@ export function DashboardShell({
           </span>
           {APP_NAME}
         </Link>
-        {sidebar}
+        <SidebarNav items={items} />
       </aside>
       <div className="lg:pl-60">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-background px-4">
@@ -57,8 +67,13 @@ export function DashboardShell({
         <main className="p-4 sm:p-6">{children}</main>
       </div>
       <Sheet open={open} onOpenChange={setOpen} title="Menu">
-        {sidebar}
+        <SidebarNav items={items} onClose={() => setOpen(false)} />
       </Sheet>
     </div>
   );
 }
+
+
+
+
+

@@ -1,4 +1,12 @@
 import { BarChart3, ClipboardList, Send } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 const steps = [
   {
@@ -23,26 +31,46 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-20">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-3xl font-bold">How it works</h2>
-        <p className="mt-3 text-center text-sm text-muted-foreground">
-          Three roles, one straightforward hiring workflow.
-        </p>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold tracking-tight">How it works</h2>
+          <p className="mt-4 text-xl text-muted-foreground">
+            Three roles, one straightforward hiring workflow.
+          </p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
-            <div key={step.role} className="text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <step.icon className="h-6 w-6" />
-              </div>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">
-                {step.role}
-              </p>
-              <h3 className="mt-1 font-semibold">
-                {index + 1}. {step.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">{step.text}</p>
-            </div>
+            <Card
+              key={step.role}
+              className={cn(
+                "group relative overflow-hidden border-muted hover:border-primary/50 transition-all duration-300",
+                index === 0 && "ring-1 ring-primary/20",
+              )}
+            >
+              <CardHeader className="flex flex-col items-center justify-center gap-4 pt-8">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <step.icon className="h-7 w-7" />
+                </div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+                  {step.role}
+                </p>
+                <h3 className="text-xl font-bold">
+                  {index + 1}. {step.title}
+                </h3>
+              </CardHeader>
+              <CardContent className="text-center mt-8">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {step.text}
+                </p>
+              </CardContent>
+              <CardFooter className="pt-8 pb-8 border-t border-muted/30">
+                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                  <span>Ready to start?</span>
+                  <span className="text-primary">Get started →</span>
+                </div>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </div>

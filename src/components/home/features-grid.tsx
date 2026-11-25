@@ -1,5 +1,6 @@
 import { FileCheck2, ShieldCheck, Timer, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -26,17 +27,31 @@ const features = [
 
 export function FeaturesGrid() {
   return (
-    <section className="border-y bg-muted/30 py-20">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-3xl font-bold">Everything you need</h2>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold tracking-tight">
+            Everything you need
+          </h2>
+          <p className="mt-4 text-xl text-muted-foreground">
+            Built-in features for every stage of the hiring process.
+          </p>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
-            <Card key={feature.title}>
+            <Card
+              key={feature.title}
+              className={cn(
+                "group relative overflow-hidden border-muted hover:border-primary/50 transition-all duration-300 hover:-translate-y-1",
+              )}
+            >
               <CardHeader>
-                <feature.icon className="h-6 w-6 text-primary" />
-                <CardTitle className="text-base">{feature.title}</CardTitle>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <feature.icon className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-lg">{feature.title}</CardTitle>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
+              <CardContent className="text-sm text-muted-foreground leading-relaxed">
                 {feature.text}
               </CardContent>
             </Card>

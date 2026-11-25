@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Cta } from "@/components/home/cta";
 import { FeaturesGrid } from "@/components/home/features-grid";
 import { Hero } from "@/components/home/hero";
@@ -26,21 +25,19 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      <section className="mx-auto max-w-7xl px-4 py-16">
-        <Image
-          src="/images/assessment.svg"
-          alt="A developer completing a timed assessment"
-          width={480}
-          height={320}
-          className="mx-auto w-full max-w-2xl rounded-2xl"
-        />
-      </section>
-      <HowItWorks />
       <FeaturesGrid />
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-center text-3xl font-bold">Latest assessments</h2>
-          <div className="mt-10">
+      <HowItWorks />
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold tracking-tight">
+              Latest assessments
+            </h2>
+            <p className="mt-4 text-xl text-muted-foreground">
+              Explore published assessments from verified companies.
+            </p>
+          </div>
+          <div className="mt-0">
             <LatestAssessmentsServer assessments={result.data} />
           </div>
         </div>

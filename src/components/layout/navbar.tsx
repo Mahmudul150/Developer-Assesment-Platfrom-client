@@ -9,6 +9,7 @@ import { MobileNav } from "./mobile-nav";
 import { UserMenu } from "./user-menu";
 
 const publicLinks = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
@@ -73,7 +74,7 @@ export async function Navbar() {
                 href="/register"
                 className={cn(buttonVariants(), "hidden sm:inline-flex")}
               >
-                Get started
+                Register
               </Link>
             </>
           )}
@@ -83,3 +84,5 @@ export async function Navbar() {
     </header>
   );
 }
+
+

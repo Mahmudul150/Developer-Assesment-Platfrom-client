@@ -14,6 +14,7 @@ export const navByRole: Record<RoleType, NavItem[]> = {
     { href: "/admin/companies", label: "Companies" },
     { href: "/admin/payments", label: "Payments" },
     { href: "/admin/audit-logs", label: "Audit Logs" },
+    { href: "/", label: "Back to Home" },
   ],
   [Role.COMPANY]: [
     { href: "/company", label: "Overview" },
@@ -22,11 +23,13 @@ export const navByRole: Record<RoleType, NavItem[]> = {
     { href: "/company/submissions", label: "Submissions" },
     { href: "/company/payments", label: "Payments" },
     { href: "/company/profile", label: "Profile" },
+    { href: "/", label: "Back to Home"}
   ],
   [Role.CANDIDATE]: [
     { href: "/candidate", label: "Invitations" },
     { href: "/candidate/attempts", label: "My Attempts" },
     { href: "/candidate/profile", label: "Profile" },
+    { href: "/", label: "Back to Home"}
   ],
 };
 
