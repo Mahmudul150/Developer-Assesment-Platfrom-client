@@ -34,7 +34,7 @@ export function ContactForm() {
     <div className="space-y-6">
       <Alert>
         <AlertDescription>
-          Contact messages are not stored by the platform yet. This form opens
+          Contact messages are not stored by the platform yet. This form open
           your email app with a prepared message.
         </AlertDescription>
       </Alert>
