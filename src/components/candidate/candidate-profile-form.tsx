@@ -141,26 +141,41 @@ export function CandidateProfileForm({
                   </button>
                 </span>
               ))}
-              <input
-                type="text"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck="false"
-                value={skillInput}
-                onChange={(event) => setSkillInput(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === ",") {
-                    event.preventDefault();
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  value={skillInput}
+                  onChange={(event) => setSkillInput(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === ",") {
+                      event.preventDefault();
+                      const value = skillInput.trim();
+                      if (value && !field.state.value.includes(value)) {
+                        field.handleChange([...field.state.value, value]);
+                      }
+                      setSkillInput("");
+                    }
+                  }}
+                  className="flex-1 bg-background text-sm"
+                  placeholder="e.g. React"
+                />
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => {
                     const value = skillInput.trim();
                     if (value && !field.state.value.includes(value)) {
                       field.handleChange([...field.state.value, value]);
                     }
                     setSkillInput("");
-                  }
-                }}
-                className="min-w-32 flex-1 bg-background text-sm"
-                placeholder="e.g. React"
-              />
+                  }}
+                >
+                  Add
+                </Button>
+              </div>
             </div>
           </FormField>
         )}
