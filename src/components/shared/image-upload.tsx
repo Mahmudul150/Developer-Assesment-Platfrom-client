@@ -38,7 +38,10 @@ export function ImageUpload({
     formData.append("profileImage", file);
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/api/v1/auth/image-upload");
+    xhr.open(
+      "POST",
+      `${process.env.NEXT_PUBLIC_BACKEND_URL ?? ""}/api/v1/auth/image-upload`,
+    );
     xhr.withCredentials = true;
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable) {

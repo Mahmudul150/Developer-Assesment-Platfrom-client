@@ -2,7 +2,7 @@ import { type FetchOptions, ofetch } from "ofetch";
 import { ApiError, type ApiErrorBody } from "@/types/api";
 
 const client = ofetch.create({
-  baseURL: "/api/v1",
+  baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL ?? ""}/api/v1`,
   credentials: "include",
   retry: 0,
 });
