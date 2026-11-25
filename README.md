@@ -9,7 +9,7 @@ A role-based online assessment platform where companies can create technical ass
 
 ## Project Overview
 
-Developer Assessment Platform is a full-stack assessment management system designed to simplify technical recruitment and candidate evaluation.
+Developer Assessment Platform is a full-stack assessment management systems designed to simplify technical recruitment and candidate evaluation.
 
 The platform supports three primary roles:
 
