@@ -23,6 +23,12 @@ export async function Navbar() {
   const links = home
     ? [...publicLinks, { href: home, label: "Dashboard" }]
     : publicLinks;
+  const authLinks = session.isLoggedIn
+    ? undefined
+    : [
+        { href: "/login", label: "Log in", variant: "ghost" as const },
+        { href: "/register", label: "Register" },
+      ];
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
@@ -78,7 +84,7 @@ export async function Navbar() {
               </Link>
             </>
           )}
-          <MobileNav links={links} />
+          <MobileNav links={links} authLinks={authLinks} />
         </div>
       </div>
     </header>
