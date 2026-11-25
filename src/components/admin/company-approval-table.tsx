@@ -108,7 +108,7 @@ export function CompanyApprovalTable({ companies }: { companies: Company[] }) {
       <DataTable
         columns={columns}
         data={companies}
-        empty="No companies match these filters."
+        empty="No companies matchs these filters."
       />
 
       <ConfirmDialog
