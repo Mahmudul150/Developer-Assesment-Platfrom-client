@@ -32,7 +32,7 @@ export function Sheet({ open, onOpenChange, title, children }: SheetProps) {
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
         className={cn(
-          "absolute right-0 top-0 h-full w-3/4 max-w-sm overflow-y-auto border-l bg-background p-6 shadow-lg",
+          "fixed right-0 top-0 h-[100dvh] w-3/4 max-w-sm overflow-y-auto border-l bg-background p-6 shadow-lg",
         )}
       >
         <div className="mb-4 flex items-center justify-between">
