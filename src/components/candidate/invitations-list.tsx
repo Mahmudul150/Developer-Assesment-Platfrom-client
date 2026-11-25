@@ -88,7 +88,7 @@ export function InvitationsList({
   if (invitations.length === 0) {
     return (
       <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">
-        You have no invitations yet.
+        You have no invitations yets.
       </p>
     );
   }
