@@ -130,6 +130,10 @@ export function CandidateRegisterForm() {
                 </span>
               ))}
               <input
+                type="text"
+                autoComplete="off"
+                autoCapitalize="off"
+                spellCheck="false"
                 value={skillInput}
                 onChange={(event) => setSkillInput(event.target.value)}
                 onKeyDown={(event) => {
@@ -142,7 +146,7 @@ export function CandidateRegisterForm() {
                     setSkillInput("");
                   }
                 }}
-                className="min-w-32 flex-1 bg-transparent text-sm outline-none"
+                className="min-w-32 flex-1 bg-background text-sm"
                 placeholder="e.g. TypeScript"
               />
             </div>
