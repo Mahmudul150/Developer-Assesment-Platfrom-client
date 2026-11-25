@@ -142,7 +142,7 @@ git clone YOUR_FRONTEND_REPOSITORY_URL
 ### 2. Navigate to the project directory
 
 ```bash
-cd YOUR_FRONTEND_PROJECT_FOLDER
+cd assigenment-7
 ```
 
 ### 3. Install dependencies
@@ -218,20 +218,18 @@ To deploy your own version:
 
 ## Related Resources
 
-- **Frontend Repository:** YOUR_FRONTEND_REPOSITORY_URL
-- **Backend Repository:** YOUR_BACKEND_REPOSITORY_URL
-- **API Documentation:** ADD_POSTMAN_OR_SWAGGER_LINK
+- **Frontend Repository:** https://github.com/Mahmudul150/Developer-Assesment-Platfrom-client
+- **Backend Repository:** https://github.com/Mahmudul150/assigenment-6
+- **API Documentation:** https://documenter.getpostman.com/view/50323079/2sBYHYtcot
 - **Demo Video:** ADD_DEMO_VIDEO_LINK
 
 ## Demo Accounts
 
 Add your actual seeded demo credentials here before publishing the README.
 
-| Role      | Email               | Password     |
-| --------- | ------------------- | ------------ |
-| Admin     | ADD_ADMIN_EMAIL     | ADD_PASSWORD |
-| Company   | ADD_COMPANY_EMAIL   | ADD_PASSWORD |
-| Candidate | ADD_CANDIDATE_EMAIL | ADD_PASSWORD |
+| Role  | Email           | Password     |
+| ----- | --------------- | ------------ |
+| Admin | ADD_ADMIN_EMAIL | ADD_PASSWORD |
 
 ## Author
 
