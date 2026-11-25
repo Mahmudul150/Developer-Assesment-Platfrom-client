@@ -8,6 +8,7 @@ import {
 } from "@/types/api";
 
 const backendUrl = process.env.BACKEND_URL ?? "http://localhost:5000";
+const normalizedBackendUrl = backendUrl.replace(/\/api\/v1$/, "");
 
 function isRedirect(error: unknown): boolean {
   return (
@@ -29,7 +30,7 @@ export async function serverApi<T>(
   headersObject.set("Content-Type", "application/json");
   if (token) headersObject.set("Authorization", `Bearer ${token}`);
 
-  const res = await fetch(`${backendUrl}${path}`, {
+  const res = await fetch(`${normalizedBackendUrl}${path}`, {
     ...options,
     headers: headersObject,
     cache: "no-store",

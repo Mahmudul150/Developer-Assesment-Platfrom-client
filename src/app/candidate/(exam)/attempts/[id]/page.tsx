@@ -16,13 +16,14 @@ export default async function ExamPage({
   const { id } = await params;
   const token = (await cookies()).get("accessToken")?.value;
   const backendUrl = process.env.BACKEND_URL ?? "http://localhost:5000";
+  const normalizedBackendUrl = backendUrl.replace(/\/api\/v1$/, "");
 
   let payload: AttemptProblemsResponse | null = null;
   let message = "";
   let serverNow = Date.now();
   try {
     const response = await fetch(
-      `${backendUrl}/api/v1/attempt/get-attempt-problems/${id}`,
+      `${normalizedBackendUrl}/api/v1/attempt/get-attempt-problems/${id}`,
       {
         headers: {
           "Content-Type": "application/json",

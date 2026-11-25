@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 const backendUrl = process.env.BACKEND_URL ?? "http://localhost:5000";
+const normalizedBackendUrl = backendUrl.replace(/\/api\/v1$/, "");
 
 export async function GET(request: NextRequest) {
   const requested = request.nextUrl.searchParams.get("next") ?? "/";
@@ -13,13 +14,16 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const response = await fetch(`${backendUrl}/api/v1/auth/refresh-token`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: `refreshToken=${refreshToken}`,
+    const response = await fetch(
+      `${normalizedBackendUrl}/api/v1/auth/refresh-token`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `refreshToken=${refreshToken}`,
+        },
       },
-    });
+    );
 
     if (!response.ok) {
       return NextResponse.redirect(new URL("/login", request.url));

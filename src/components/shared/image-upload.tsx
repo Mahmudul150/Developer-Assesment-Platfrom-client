@@ -37,11 +37,11 @@ export function ImageUpload({
     const formData = new FormData();
     formData.append("profileImage", file);
 
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
+    const normalizedBackendUrl = backendUrl.replace(/\/api\/v1$/, "");
+
     const xhr = new XMLHttpRequest();
-    xhr.open(
-      "POST",
-      `${process.env.NEXT_PUBLIC_BACKEND_URL ?? ""}/api/v1/auth/image-upload`,
-    );
+    xhr.open("POST", `${normalizedBackendUrl}/api/v1/auth/image-upload`);
     xhr.withCredentials = true;
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable) {

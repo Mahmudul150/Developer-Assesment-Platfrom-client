@@ -1,8 +1,11 @@
 import { type FetchOptions, ofetch } from "ofetch";
 import { ApiError, type ApiErrorBody } from "@/types/api";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
+const normalizedBackendUrl = backendUrl.replace(/\/api\/v1$/, "");
+
 const client = ofetch.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL ?? ""}/api/v1`,
+  baseURL: `${normalizedBackendUrl}/api/v1`,
   credentials: "include",
   retry: 0,
 });
