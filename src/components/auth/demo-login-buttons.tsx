@@ -9,6 +9,7 @@ import { roleFromToken } from "@/lib/auth";
 import { demoCredentials } from "@/lib/constants";
 import { resolveNext } from "@/lib/redirect";
 import { ApiError } from "@/types/api";
+import { Role } from "@/types/enums";
 
 const descriptions: Record<string, string> = {
   Admin: "Manage users, approvals and payments.",
@@ -52,27 +53,29 @@ export function DemoLoginButtons({ next }: { next?: string }) {
 
   return (
     <div className="grid gap-2 sm:grid-cols-3">
-      {demoCredentials.map((credential) => (
-        <div
-          key={credential.label}
-          className="flex flex-col rounded-lg border p-3 text-left"
-        >
-          <p className="text-sm font-semibold">{credential.label}</p>
-          <p className="mt-1 flex-1 text-xs text-muted-foreground">
-            {descriptions[credential.label]}
-          </p>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-3 w-full"
-            disabled={pending !== null}
-            onClick={() => void login(credential)}
+      {demoCredentials
+        .filter((credential) => credential.role === Role.ADMIN)
+        .map((credential) => (
+          <div
+            key={credential.label}
+            className="flex flex-col rounded-lg border p-3 text-left"
           >
-            {pending === credential.label ? "..." : "Demo Login"}
-          </Button>
-        </div>
-      ))}
+            <p className="text-sm font-semibold">{credential.label}</p>
+            <p className="mt-1 flex-1 text-xs text-muted-foreground">
+              {descriptions[credential.label]}
+            </p>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="mt-3 w-full"
+              disabled={pending !== null}
+              onClick={() => void login(credential)}
+            >
+              {pending === credential.label ? "..." : "Demo Login"}
+            </Button>
+          </div>
+        ))}
     </div>
   );
 }

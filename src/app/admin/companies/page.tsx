@@ -21,12 +21,12 @@ export default async function AdminCompaniesPage({
   }>;
 }) {
   const params = await searchParams;
-  const isApproved = params.isApproved ?? "false";
+  const isApproved = params.isApproved;
   const query = new URLSearchParams({
-    isApproved,
     page: params.page ?? "1",
     limit: "10",
   });
+  if (isApproved) query.set("isApproved", isApproved);
   if (params.searchTerm) query.set("searchTerm", params.searchTerm);
 
   let result: PaginatedResponse<Company> = {

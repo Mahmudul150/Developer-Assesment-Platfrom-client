@@ -18,7 +18,9 @@ export const metadata: Metadata = { title: "Payments" };
 export const dynamic = "force-dynamic";
 
 export default async function AdminPaymentsPage() {
-  const result = await safeServerList<Payment>("/api/v1/payments?limit=50");
+  const result = await safeServerList<Payment>(
+    "/api/v1/payments/allPayments?limit=50",
+  );
   return (
     <div className="space-y-6">
       <PageHeader title="Payments" description="All platform payments." />

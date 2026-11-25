@@ -4,7 +4,7 @@ import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { StatusBadge } from "@/components/shared/status-badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/hooks/use-auth";
@@ -20,14 +20,22 @@ export function UserMenu({
   role: Role;
 }) {
   const router = useRouter();
+  const { user } = useAuth();
   const { logout: logoutUser, isLoggingOut } = useAuth();
+
+  const imageUrl = user?.imageUrl ?? null;
+  const initial = name.charAt(0).toUpperCase();
 
   return (
     <DropdownMenu
       trigger={
         <span className="flex items-center gap-2 rounded-full border py-1 pl-1 pr-3 text-sm">
-          <Avatar className="h-7 w-7">
-            <AvatarFallback>{name.charAt(0).toUpperCase()}</AvatarFallback>
+          <Avatar className="h-10 w-10">
+            {imageUrl ? (
+              <AvatarImage src={imageUrl} alt={name} className="object-cover" />
+            ) : (
+              <AvatarFallback>{initial}</AvatarFallback>
+            )}
           </Avatar>
           <span className="hidden sm:inline">{name}</span>
         </span>
