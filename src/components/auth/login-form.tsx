@@ -82,7 +82,7 @@ export function LoginForm({ next }: { next?: string }) {
               <div className="relative">
                 <Input
                   type={showPassword ? "text" : "password"}
-                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                  placeholder="********"
                   className="pr-10"
                   value={field.state.value}
                   onChange={(event) => field.handleChange(event.target.value)}
