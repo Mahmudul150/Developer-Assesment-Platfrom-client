@@ -13,7 +13,7 @@ export default function RouteErrorBoundary({
     <RouteError
       error={error}
       reset={reset}
-      title="Candidate section could not be loaded"
+      title="Candidate sections could not be loaded"
     />
   );
 }
